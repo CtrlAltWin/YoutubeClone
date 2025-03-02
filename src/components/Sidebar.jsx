@@ -14,7 +14,7 @@ const Sidebar = () => {
   const showSlidebar = useSelector((store) => store.slidebar.isOpen);
   if (!showSlidebar) return <div></div>;
   return (
-    <div className="border-r border-gray-100 h-[calc(100vh-4rem)] absolute md:static z-10 bg-white">
+    <div className="border-r w-[200px] border-gray-100 h-[calc(100vh-4rem)] absolute z-10 bg-white">
       <ul className="p-4 font-semibold text-gray-700 w-52">
         <li className="p-2 m-1 hover:bg-gray-100 rounded-lg flex gap-1">
           <RiHome4Line />
