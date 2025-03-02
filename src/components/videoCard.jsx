@@ -9,7 +9,7 @@ const formatViews = (viewCount) => {
 
 const VideoCard = ({ video }) => {
   return (
-    <div className="w-80 bg-white overflow-hidden cursor-pointer">
+    <div className="w-[23rem] md:w-80 bg-white overflow-hidden cursor-pointer">
       <img
         src={video.snippet.thumbnails.standard.url}
         alt={video.snippet.title}

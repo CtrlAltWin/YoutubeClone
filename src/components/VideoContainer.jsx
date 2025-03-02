@@ -12,12 +12,10 @@ const VideoContainer = () => {
     })();
   }, []);
 
-  console.log(videos);
-
   if (!videos.length) return <div></div>;
 
   return (
-    <div className="flex flex-wrap justify-center gap-x-2 gap-y-14 h-full w-[97vw] mt-3 pt-5 overflow-y-scroll hide-scrollbar">
+    <div className="flex flex-wrap justify-center gap-x-2 gap-y-4 md:gap-y-14 h-full w-[97vw] mt-3 pt-5 overflow-y-scroll hide-scrollbar">
       {videos.map((video) => (
         <VideoCard key={video.id} video={video} />
       ))}
