@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 
-const Button = () => {
+const Button = ({title}) => {
   const [active, setActive] = useState(false);
-  console.log(active);
-
   return (
     <button
       className={`py-[5px] px-[14px] rounded-lg font-semibold text-sm whitespace-nowrap transition-all duration-200 ${
@@ -11,7 +9,7 @@ const Button = () => {
       }`}
       onClick={() => setActive(!active)}
     >
-      Game Development
+      {title}
     </button>
   );
 };
