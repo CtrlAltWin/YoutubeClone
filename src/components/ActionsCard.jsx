@@ -4,14 +4,13 @@ import {
   RiThumbDownLine,
   RiDownloadLine,
   RiShare2Line,
-  RiMore2Line,
 } from "@remixicon/react";
 const ActionsCard = () => {
   return (
     <div className="font-semibold max-w-[950px] mt-2 text-gray-800">
       {/* channelname and thumnail */}
-      <div className="flex gap-4">
-        <p className="font-semibold text-xl mt-1 px-3">Colin Galen</p>
+      <div className="flex gap-4 items-center">
+        <p className="font-semibold text-xl px-3">Colin Galen</p>
         {/* join and subscribe button */}
         <div className="text-sm sm:text-md">
           <button className="bg-neutral-200 px-4 py-2 rounded-full mx-1">
@@ -37,13 +36,9 @@ const ActionsCard = () => {
           <RiShare2Line />
           <p className="text-sm">Share</p>
         </button>
-
         <button className="flex items-center px-4 py-2 rounded-full bg-neutral-100">
           <RiDownloadLine />
           Download
-        </button>
-        <button className="flex items-center px-2 py-2 rounded-full bg-neutral-100">
-          <RiMore2Line />
         </button>
       </div>
     </div>
