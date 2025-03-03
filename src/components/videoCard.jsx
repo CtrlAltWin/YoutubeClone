@@ -13,7 +13,7 @@ const VideoCard = ({ video }) => {
       <img
         src={video.snippet.thumbnails.standard.url}
         alt={video.snippet.title}
-        className="w-full h-44 object-cover rounded-lg scale-x-95"
+        className="w-full h-52 md:h-44  object-cover rounded-lg scale-x-95"
       />
       <div className="p-3">
         <h3 className="text-md font-semibold truncate">
