@@ -10,16 +10,19 @@ import {
 } from "@remixicon/react";
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   const showSlidebar = useSelector((store) => store.slidebar.isOpen);
   if (!showSlidebar) return <div></div>;
   return (
     <div className="border-r w-[200px] border-gray-100 h-[calc(100vh-4rem)] absolute z-10 bg-white">
       <ul className="p-4 font-semibold text-gray-700 w-52">
-        <li className="p-2 m-1 hover:bg-gray-100 rounded-lg flex gap-1">
-          <RiHome4Line />
-          Home
-        </li>
+        <Link to={"/"}>
+          <li className="p-2 m-1 hover:bg-gray-100 rounded-lg flex gap-1">
+            <RiHome4Line />
+            Home
+          </li>
+        </Link>
         <li className="p-2 m-1 hover:bg-gray-100 rounded-lg flex gap-1">
           <RiFireLine />
           Trending
