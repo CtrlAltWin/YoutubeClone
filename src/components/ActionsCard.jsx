@@ -26,19 +26,19 @@ const ActionsCard = () => {
       <div className="flex gap-4 mt-4 text-gray-800 px-1">
         <div className="flex rounded-full bg-neutral-100">
           <button className="px-4 py-2 border-r border-gray-300">
-            <RiThumbUpLine />
+            <RiThumbUpLine width={20} />
           </button>
           <button className="px-4 py-2">
-            <RiThumbDownLine />
+            <RiThumbDownLine width={20} />
           </button>
         </div>
         <button className="flex items-center px-4 py-2 rounded-full bg-neutral-100">
-          <RiShare2Line />
-          <p className="text-sm">Share</p>
+          <RiShare2Line width={20} />
+          <p className="text-sm">{" Share"}</p>
         </button>
         <button className="flex items-center px-4 py-2 rounded-full bg-neutral-100">
-          <RiDownloadLine />
-          Download
+          <RiDownloadLine width={20} />
+          {" Download"}
         </button>
       </div>
     </div>
