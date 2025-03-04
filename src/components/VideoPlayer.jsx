@@ -6,7 +6,7 @@ const VideoPlayer = ({ videoId }) => {
   if (!videoId) return <p className="text-red-500">No video ID provided</p>;
   console.log(videoId);
   return (
-    <div className="w-full h-[60vw] md:h-[450px] lg:h-[520px] max-w-[950px] rounded-xl overflow-hidden">
+    <div className="w-full h-[55vw] md:h-[450px] lg:h-[520px] max-w-[950px] rounded-lg overflow-hidden">
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${videoId}`}
         controls

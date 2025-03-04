@@ -20,13 +20,13 @@ const WatchPage = () => {
   }, [videoId]);
 
   return (
-    <div className="lg:flex w-[100vw] h-[calc(100vh-5rem)] mt-4 sm:mx-6">
+    <div className="lg:flex w-[100vw] h-[calc(100vh-5rem)] mt-2 sm:mt-4 mx-2 sm:mx-6">
       {/* video and video details */}
       <div className="w-full">
         <VideoPlayer videoId={videoId} />
 
         {/* video Title */}
-        <h2 className="font-semibold text-2xl lg:text-3xl mt-2 px-2">
+        <h2 className="font-semibold text-xl md:text-2xl lg:text-3xl mt-2 px-2">
           My Competetive Programming Journey
         </h2>
         {/* Actions */}
