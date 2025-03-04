@@ -56,13 +56,13 @@ const ActionsCard = ({ videoId }) => {
       <div className="flex gap-5 mt-4 px-1 text-sm text-gray-600 overflow-x-auto whitespace-nowrap hide-scrollbar">
         {/* Like & Dislike */}
         <div className="flex rounded-full bg-neutral-100">
-          <button className="flex gap-1 items-center px-3 py-1 border-r border-gray-300 hover:bg-neutral-200">
+          <button className="flex gap-1 items-center px-3 py-1 border-r rounded-l-full border-gray-300 hover:bg-neutral-200">
             <RiThumbUpLine width={18} />
             <span>
               {(videoData?.statistics?.likeCount || 0).toLocaleString()}
             </span>
           </button>
-          <button className="px-3 py-1 hover:bg-neutral-200">
+          <button className="px-3 py-1 hover:bg-neutral-200 rounded-r-full">
             <RiThumbDownLine width={18} />
           </button>
         </div>

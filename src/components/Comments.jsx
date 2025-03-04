@@ -57,8 +57,8 @@ const Comments = ({ videoId }) => {
             </div>
           );
         })
-      ) : (
-        <p className="text-center text-gray-500">No comments available.</p>
+      ) : (/*to be improved*/
+        <p className="text-center text-gray-500"></p>
       )}
     </div>
   );
