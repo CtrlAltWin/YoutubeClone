@@ -1,12 +1,11 @@
 import React from "react";
 import ReactPlayer from "react-player/lazy";
-import { useSearchParams } from "react-router-dom";
 
 const VideoPlayer = ({ videoId }) => {
   if (!videoId) return <p className="text-red-500">No video ID provided</p>;
   console.log(videoId);
   return (
-    <div className="w-full h-[55vw] md:h-[450px] lg:h-[520px] max-w-[950px] rounded-lg overflow-hidden">
+    <div className="w-full h-[55vw] md:h-[480px] lg:h-[495px] lg:min-w-[700px] max-w-[880px] rounded-lg overflow-hidden">
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${videoId}`}
         controls

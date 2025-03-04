@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Button = ({title}) => {
+const Button = ({ title }) => {
   const [active, setActive] = useState(false);
   return (
     <button

@@ -7,6 +7,7 @@ import {
 } from "@remixicon/react";
 import { toggleSidebar } from "../utils/sidebarSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 const Head = () => {
   const dispatch = useDispatch();
   return (
@@ -19,8 +20,9 @@ const Head = () => {
         >
           <RiMenuLine className="text-gray-600 h-[42px] w-[42px] p-[10px] hover:bg-gray-100 rounded-full" />
         </button>
-
-        <RiYoutubeFill size={30} className="text-red-500" />
+        <Link to={"/"}>
+          <RiYoutubeFill size={30} className="text-red-500" />
+        </Link>
       </div>
       <div className="flex items-center border-1 border-gray-300 bg-gray-50 hover:bg-gray-100 rounded-full">
         <input
