@@ -34,13 +34,13 @@ const ActionsCard = ({ videoId }) => {
   return (
     <div className="font-semibold max-w-[880px] text-gray-800">
       {/* video Title */}
-      <h2 className="font-semibold md:text-xl mt-2 px-2 text-gray-700">
+      <h2 className="font-semibold md:text-xl mt-2 px-2 text-gray-800">
         {videoData?.snippet.title}
       </h2>
       {/* Channel Name and Subscribe */}
       <div className="flex gap-4 items-center mt-4">
-        <h3 className="font-bold text-xl px-2 text-gray-700 truncate w-[100px] sm:w-[300px] lg:w-auto">
-          {videoData?.snippet?.channelTitle || "Loading..."}
+        <h3 className="font-bold text-xl px-2 text-gray-700 truncate w-[150px] sm:w-[300px] lg:w-auto">
+          {videoData?.snippet?.channelTitle}
         </h3>
         <div className="text-sm">
           <button className="bg-neutral-200 px-4 py-2 rounded-full mx-1 hover:bg-neutral-300">
