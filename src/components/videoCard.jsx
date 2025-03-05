@@ -10,12 +10,12 @@ const formatViews = (viewCount) => {
 
 const VideoCard = ({ video }) => {
   return (
-    <Link to={"/watch?v="+video.id}>
+    <Link to={"/watch?v=" + video.id}>
       <div className="w-96 md:w-80 bg-white overflow-hidden cursor-pointer">
         <img
           src={video.snippet.thumbnails.standard.url}
           alt={video.snippet.title}
-          className="w-full h-52 md:h-44  object-cover rounded-lg scale-x-95"
+          className="w-full h-52 md:h-44  object-cover rounded-lg"
         />
         <div className="p-3">
           <h3 className="text-md font-semibold truncate">

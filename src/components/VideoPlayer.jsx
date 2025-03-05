@@ -3,7 +3,6 @@ import ReactPlayer from "react-player/lazy";
 
 const VideoPlayer = ({ videoId }) => {
   if (!videoId) return <p className="text-red-500">No video ID provided</p>;
-  console.log(videoId);
   return (
     <div className="w-full h-[55vw] md:h-[480px] lg:h-[495px] lg:min-w-[700px] max-w-[880px] rounded-lg overflow-hidden">
       <ReactPlayer

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { commentsUrl } from "../utils/api";
+import { commentsUrl } from "../utils/url";
 
 const Comments = ({ videoId }) => {
   const [comments, setComments] = useState([]);
@@ -13,7 +13,7 @@ const Comments = ({ videoId }) => {
         const json = await response.json();
         setComments(json.items || []);
       } catch (error) {
-        console.error("Error fetching comments:", error);
+        //navigate to err page
       }
     };
 
@@ -35,7 +35,7 @@ const Comments = ({ videoId }) => {
               <img
                 src={author.authorProfileImageUrl}
                 alt={author.authorDisplayName}
-                className="w-10 h-10 rounded-full object-cover border"
+                className="w-10 h-10 rounded-full object-cover"
               />
 
               <div className="flex-1">
@@ -57,7 +57,8 @@ const Comments = ({ videoId }) => {
             </div>
           );
         })
-      ) : (/*to be improved*/
+      ) : (
+        /*to be improved*/
         <p className="text-center text-gray-500"></p>
       )}
     </div>

@@ -11,6 +11,7 @@ import {
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 const Sidebar = () => {
   const showSlidebar = useSelector((store) => store.slidebar.isOpen);
   if (!showSlidebar) return <div></div>;
@@ -31,6 +32,7 @@ const Sidebar = () => {
           <RiYoutubeLine />
           Subscriptions
         </li>
+
         <li className="p-2 m-1 hover:bg-gray-100 rounded-lg flex gap-1">
           <RiMenuUnfoldFill />
           Playlist

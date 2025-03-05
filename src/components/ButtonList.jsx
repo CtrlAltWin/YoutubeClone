@@ -21,16 +21,15 @@ const filterWords = [
   "Science",
   "Finance",
   "Travel",
-  "Cooking"
+  "Cooking",
 ];
 
 const ButtonList = () => {
   return (
     <div className="overflow-x-scroll w-[90vw] h-10 mt-3 hide-scrollbar scroll-smooth flex gap-3">
-      {filterWords
-        .map((title, index) => (
-          <Button key={index} title={title} />
-        ))}
+      {filterWords.map((title, index) => (
+        <Button key={index} title={title} />
+      ))}
     </div>
   );
 };

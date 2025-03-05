@@ -6,7 +6,7 @@ import {
   RiShare2Line,
   RiMoreLine,
 } from "@remixicon/react";
-import { Fetch_Videos_By_Id_Url } from "../utils/api";
+import { videos_By_Id_Url } from "../utils/url";
 
 const ActionsCard = ({ videoId }) => {
   const [videoData, setVideoData] = useState(null);
@@ -16,7 +16,7 @@ const ActionsCard = ({ videoId }) => {
 
     const fetchVideoDetails = async () => {
       try {
-        const url = `${Fetch_Videos_By_Id_Url}&id=${videoId}`;
+        const url = `${videos_By_Id_Url}&id=${videoId}`;
         const response = await fetch(url);
         const data = await response.json();
 
@@ -24,7 +24,7 @@ const ActionsCard = ({ videoId }) => {
           setVideoData(data.items[0]);
         }
       } catch (error) {
-        console.error("Error fetching video details:", error);
+        //navigate to err page
       }
     };
 
