@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { commentsUrl } from "../utils/url";
 
 const Comments = ({ videoId }) => {
   const [comments, setComments] = useState([]);
+  const [nextPageToken, setNextPageToken] = useState("");
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        commentsUrl + `&videoId=${videoId}&pageToken=${nextPageToken}`
+      );
+      const json = await response.json();
+      setNextPageToken(json.nextPageToken);
+      setComments(prevComments => [...prevComments, ...json.items]);
+    } catch (error) {
+      //navigate to err page
+    }
+  };
 
   useEffect(() => {
-    if (!videoId) return;
-
-    const fetchData = async () => {
-      try {
-        const response = await fetch(commentsUrl + `&videoId=${videoId}`);
-        const json = await response.json();
-        setComments(json.items || []);
-      } catch (error) {
-        //navigate to err page
-      }
-    };
-
     fetchData();
   }, [videoId]);
 
   return (
-    <div className="w-full flex flex-col lg:max-w-[490px] lg:overflow-y-auto hide-scrollbar lg:border border-gray-200 rounded-md lg:ml-2 mt-4 p-4 bg-white border">
+    <div
+      className="w-full flex flex-col lg:max-w-[490px] lg:overflow-y-auto hide-scrollbar lg:border border-gray-200 rounded-md lg:ml-2 mt-4 p-4 bg-white border"
+    >
       {/* Comments Heading */}
       <h3 className="text-lg font-semibold mb-4 border-b pb-2">Comments</h3>
 
@@ -61,6 +65,12 @@ const Comments = ({ videoId }) => {
         /*to be improved*/
         <p className="text-center text-gray-500"></p>
       )}
+      <button
+        className="border p-1 text-gray-700 border-gray-700 rounded-lg hover:bg-neutral-100"
+        onClick={() => fetchData()}
+      >
+        Load More Comments
+      </button>
     </div>
   );
 };

@@ -21,7 +21,7 @@ const Suggestions = ({ searchText, showSuggestions }) => {
   }, [searchText]);
   if (suggestions.length === 0 || !showSuggestions) return <div></div>;
   return (
-    <div className="w-[38vw] bg-neutral-50 absolute top-15 rounded-xl py-4 font-semibold shadow-md">
+    <div className="w-[38vw] min-w-[270px] bg-neutral-50 absolute top-15 rounded-xl py-4 font-semibold shadow-md">
       {suggestions.map((suggestion, index) => {
         return (
           <div
