@@ -2,57 +2,52 @@ import React, { useEffect, useRef, useState } from "react";
 import { Most_Popular_Videos_Url } from "../utils/url";
 import VideoCard from "./videoCard";
 import { ClipLoader } from "react-spinners";
-
+import { useDispatch, useSelector } from "react-redux";
+import { accumulateVideos } from "../utils/homeVideosSlice";
 const VideoContainer = () => {
-  const [videos, setVideos] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [nextPageToken, setNextPageToken] = useState("");
   const containerRef = useRef(null);
+  const dispatch = useDispatch();
+  const videos = useSelector((store) => store.homeVideos.videos);
+  const isLoading = useRef(false);
 
   const fetchData = async () => {
-    const data = await fetch(
-      `${Most_Popular_Videos_Url}&pageToken=${nextPageToken}`
-    );
-    const json = await data.json();
-    setVideos((prev) => [...prev, ...json.items]);
-    setNextPageToken(json.nextPageToken ? json.nextPageToken : null);
+    try {
+      isLoading.current = true;
+      const data = await fetch(
+        `${Most_Popular_Videos_Url}&pageToken=${nextPageToken}`
+      );
+      const json = await data.json();
+      dispatch(accumulateVideos(json.items));
+      setNextPageToken(json.nextPageToken ? json.nextPageToken : null);
+    } catch (err) {
+      console.log("error fetcheing data" + err.message);
+    } finally {
+      setTimeout(() => {
+        isLoading.current = false;
+      }, 1000);
+    }
   };
 
   const handleInfiniteScroll = async () => {
+    if (isLoading.current) return;
     const { scrollHeight, scrollTop, clientHeight } = containerRef.current;
-    if (
-      scrollTop + clientHeight >= scrollHeight - 100 &&
-      nextPageToken &&
-      !isLoading
-    ) {
-      try {
-        setIsLoading(true);
-        await fetchData();
-      } catch (e) {
-        console.error("Failed to fetch data", e.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+    if (scrollTop + clientHeight >= scrollHeight - 5 && nextPageToken != null)
+      fetchData();
   };
 
   useEffect(() => {
-    try {
-      fetchData();
-    } catch (e) {
-      console.error("Failed to fetch data", e.message);
-    }
+    fetchData();
   }, []);
 
   useEffect(() => {
     if (videos.length > 0) {
-      //not needed this condition, already taken care
       const container = containerRef.current;
       container.addEventListener("scroll", handleInfiniteScroll);
       return () =>
         container.removeEventListener("scroll", handleInfiniteScroll);
     }
-  }, [videos.length]);
+  }, [nextPageToken]);
 
   if (!videos.length) return <div></div>;
 
@@ -64,11 +59,11 @@ const VideoContainer = () => {
       {videos.map((video, index) => (
         <VideoCard key={`${video.id}-${index}`} video={video} />
       ))}
-      {isLoading && (
+      {
         <div className="flex justify-center w-full pb-2">
           <ClipLoader size={25} color="#F53131" />
         </div>
-      )}
+      }
     </div>
   );
 };

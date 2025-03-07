@@ -9,7 +9,7 @@ const WatchPage = () => {
   const videoId = searchParams.get("v");
 
   return (
-    <div className="lg:flex w-[100vw] lg:h-[calc(100vh-5rem)] sm:mt-4 px-1 sm:px-6">
+    <div className="lg:flex w-[100vw] lg:h-[calc(100vh-5rem)] sm:mt-4 sm:px-6">
       {/* video and video details */}
       <div className="w-full my-2">
         <VideoPlayer videoId={videoId} />

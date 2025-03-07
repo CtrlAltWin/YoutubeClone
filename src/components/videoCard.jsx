@@ -10,26 +10,26 @@ const formatViews = (viewCount) => {
 
 const VideoCard = ({ video }) => {
   return (
-    <Link to={"/watch?v=" + video.id}>
-      <div className="w-96 md:w-80 bg-white overflow-hidden cursor-pointer">
+    <div className="w-96 md:w-80 bg-white overflow-hidden cursor-pointer">
+      <Link to={"/watch?v=" + video.id}>
         <img
           src={video.snippet.thumbnails.standard.url}
           alt={video.snippet.title}
           className="w-full h-52 md:h-44  object-cover rounded-lg"
         />
-        <div className="p-3">
-          <h3 className="text-md font-semibold truncate">
-            {video.snippet.title}
-          </h3>
-          <p className="text-sm text-gray-600 font-semibold">
-            {video.snippet.channelTitle}
-          </p>
-          <p className="text-sm text-gray-600 font-semibold">
-            {formatViews(video.statistics.viewCount)}
-          </p>
-        </div>
+      </Link>
+      <div className="p-3">
+        <h3 className="text-md font-semibold truncate">
+          {video.snippet.title}
+        </h3>
+        <p className="text-sm text-gray-600 font-semibold">
+          {video.snippet.channelTitle}
+        </p>
+        <p className="text-sm text-gray-600 font-semibold">
+          {formatViews(video.statistics.viewCount)}
+        </p>
       </div>
-    </Link>
+    </div>
   );
 };
 
