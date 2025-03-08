@@ -4,6 +4,9 @@ const homeVideosSlice = createSlice({
   name: "homeVideos",
   initialState: {
     videos: [],
+    nextPageToken: "",
+    catagories: [],
+    activeCatagoryId: null,
   },
   reducers: {
     addVideos: (state, action) => {
@@ -12,8 +15,23 @@ const homeVideosSlice = createSlice({
     accumulateVideos: (state, action) => {
       state.videos = [...state.videos, ...action.payload];
     },
+    setNextPageToken: (state, action) => {
+      state.nextPageToken = action.payload;
+    },
+    addCatagories: (state, action) => {
+      state.catagories = action.payload;
+    },
+    setActiveCatagoryId: (state, action) => {
+      state.activeCatagoryId = action.payload;
+    },
   },
 });
 
-export const { addVideos, accumulateVideos } = homeVideosSlice.actions;
+export const {
+  addVideos,
+  accumulateVideos,
+  addCatagories,
+  setActiveCatagoryId,
+  setNextPageToken
+} = homeVideosSlice.actions;
 export default homeVideosSlice.reducer;

@@ -3,23 +3,38 @@ import { Most_Popular_Videos_Url } from "../utils/url";
 import VideoCard from "./videoCard";
 import { ClipLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
-import { accumulateVideos } from "../utils/homeVideosSlice";
+import {
+  accumulateVideos,
+  addVideos,
+  setNextPageToken,
+} from "../utils/homeVideosSlice";
 const VideoContainer = () => {
-  const [nextPageToken, setNextPageToken] = useState("");
   const containerRef = useRef(null);
   const dispatch = useDispatch();
   const videos = useSelector((store) => store.homeVideos.videos);
   const isLoading = useRef(false);
-
+  const activeCatagoryId = useSelector(
+    (store) => store.homeVideos.activeCatagoryId
+  );
+  const nextPageToken = useSelector((store) => store.homeVideos.nextPageToken);
+  console.log(activeCatagoryId);
   const fetchData = async () => {
     try {
       isLoading.current = true;
       const data = await fetch(
-        `${Most_Popular_Videos_Url}&pageToken=${nextPageToken}`
+        `${Most_Popular_Videos_Url}&type=video` +
+          (nextPageToken != null ? `&pageToken=${nextPageToken}` : "") +
+          (activeCatagoryId != null
+            ? `&videoCategoryId=${activeCatagoryId}`
+            : "")
       );
       const json = await data.json();
+      console.log(json);
+      console.log("fetched");
       dispatch(accumulateVideos(json.items));
-      setNextPageToken(json.nextPageToken ? json.nextPageToken : null);
+      dispatch(
+        setNextPageToken(json.nextPageToken ? json.nextPageToken : null)
+      );
     } catch (err) {
       console.log("error fetcheing data" + err.message);
     } finally {
@@ -37,8 +52,14 @@ const VideoContainer = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    if (!videos.length) fetchData();
   }, []);
+
+  useEffect(() => {
+    dispatch(addVideos([]));
+    dispatch(setNextPageToken(""));
+    fetchData();
+  }, [activeCatagoryId]);
 
   useEffect(() => {
     if (videos.length > 0) {

@@ -1,14 +1,22 @@
 import React, { useState } from "react";
-
-const Button = ({ index, title, activeButton, setActiveButton }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { addCatagories, setActiveCatagoryId } from "../utils/homeVideosSlice";
+const Button = ({ id, title }) => {
+  const dispatch = useDispatch();
+  const activeCatagory = useSelector(
+    (store) => store.homeVideos.activeCatagoryId
+  );
+  dispatch;
   return (
     <button
       className={`py-[5px] px-[14px] rounded-lg font-semibold text-sm whitespace-nowrap transition-all duration-200 ${
-        activeButton === index
+        activeCatagory === id
           ? "bg-gray-900 text-white"
           : "bg-neutral-100 text-black"
       }`}
-      onClick={() => setActiveButton((prev) => (prev === index ? null : index))}
+      onClick={() =>
+        dispatch(setActiveCatagoryId(activeCatagory === id ? null : id))
+      }
     >
       {title}
     </button>
