@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCatagories, setActiveCatagoryId } from "../utils/homeVideosSlice";
+import {
+  addCatagories,
+  addVideos,
+  setActiveCatagoryId,
+  setNextPageToken,
+} from "../utils/homeVideosSlice";
 const Button = ({ id, title }) => {
   const dispatch = useDispatch();
   const activeCatagory = useSelector(
@@ -14,9 +19,11 @@ const Button = ({ id, title }) => {
           ? "bg-gray-900 text-white"
           : "bg-neutral-100 text-black"
       }`}
-      onClick={() =>
-        dispatch(setActiveCatagoryId(activeCatagory === id ? null : id))
-      }
+      onClick={() => {
+        dispatch(setNextPageToken(null));
+        dispatch(addVideos([]));
+        dispatch(setActiveCatagoryId(activeCatagory === id ? null : id));
+      }}
     >
       {title}
     </button>

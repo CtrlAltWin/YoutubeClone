@@ -11,13 +11,9 @@ import {
 const VideoContainer = () => {
   const containerRef = useRef(null);
   const dispatch = useDispatch();
-  const videos = useSelector((store) => store.homeVideos.videos);
   const isLoading = useRef(false);
-  const activeCatagoryId = useSelector(
-    (store) => store.homeVideos.activeCatagoryId
-  );
+  const { videos, activeCatagoryId } = useSelector((store) => store.homeVideos);
   const nextPageToken = useSelector((store) => store.homeVideos.nextPageToken);
-  console.log(activeCatagoryId);
   const fetchData = async () => {
     try {
       isLoading.current = true;
@@ -29,8 +25,6 @@ const VideoContainer = () => {
             : "")
       );
       const json = await data.json();
-      console.log(json);
-      console.log("fetched");
       dispatch(accumulateVideos(json.items));
       dispatch(
         setNextPageToken(json.nextPageToken ? json.nextPageToken : null)
@@ -47,17 +41,13 @@ const VideoContainer = () => {
   const handleInfiniteScroll = async () => {
     if (isLoading.current) return;
     const { scrollHeight, scrollTop, clientHeight } = containerRef.current;
-    if (scrollTop + clientHeight >= scrollHeight - 5 && nextPageToken != null)
+    if (scrollTop + clientHeight >= scrollHeight - 5 && nextPageToken != null) {
       fetchData();
+    }
   };
 
   useEffect(() => {
-    if (!videos.length) fetchData();
-  }, []);
-
-  useEffect(() => {
-    dispatch(addVideos([]));
-    dispatch(setNextPageToken(""));
+    /* State reset operations are done in catagory buttons */
     fetchData();
   }, [activeCatagoryId]);
 

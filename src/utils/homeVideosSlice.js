@@ -4,7 +4,7 @@ const homeVideosSlice = createSlice({
   name: "homeVideos",
   initialState: {
     videos: [],
-    nextPageToken: "",
+    nextPageToken: null,
     catagories: [],
     activeCatagoryId: null,
   },
@@ -32,6 +32,6 @@ export const {
   accumulateVideos,
   addCatagories,
   setActiveCatagoryId,
-  setNextPageToken
+  setNextPageToken,
 } = homeVideosSlice.actions;
 export default homeVideosSlice.reducer;
