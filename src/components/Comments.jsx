@@ -23,7 +23,7 @@ const Comments = ({ videoId }) => {
   }, [videoId]);
 
   return (
-    <div className="w-full flex flex-col lg:overflow-y-auto hide-scrollbar border-gray-200 px-2 pb-2 pt-4 rounded-xl lg:border-l lg:border-t">
+    <div className="w-full flex flex-col lg:overflow-y-auto hide-scrollbar border-gray-200 px-2 pb-2 pt-4 rounded-xl lg:border">
       {/* Comments Heading */}
       <h3 className="text-lg font-semibold text-gray-700 mb-4 border-b pb-2 px-2">
         Comments

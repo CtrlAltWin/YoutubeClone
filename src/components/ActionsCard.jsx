@@ -34,7 +34,7 @@ const ActionsCard = ({ videoId }) => {
   return (
     <div className="font-semibold text-gray-800 border border-gray-200 px-2 py-4 bg-gray-50 rounded-xl mt-2">
       {/* video Title */}
-      <h2 className="font-semibold md:text-xl mt-2 px-2 text-gray-800">
+      <h2 className="md:text-xl px-2 text-gray-800">
         {videoData?.snippet.title}
       </h2>
       {/* Channel Name and Subscribe */}
@@ -43,10 +43,10 @@ const ActionsCard = ({ videoId }) => {
           {videoData?.snippet?.channelTitle}
         </h3>
         <div className="text-sm">
-          <button className="bg-neutral-200 px-4 py-2 rounded-full mx-1 hover:bg-neutral-300">
+          <button className="bg-gray-200 px-4 py-2 rounded-full mx-1 hover:bg-gray-300">
             Join
           </button>
-          <button className="bg-black text-white px-4 py-2 rounded-full mx-1 hover:bg-gray-800">
+          <button className="bg-gray-800 text-white px-4 py-2 rounded-full mx-1 hover:bg-gray-700">
             Subscribe
           </button>
         </div>
@@ -55,28 +55,28 @@ const ActionsCard = ({ videoId }) => {
       {/* Action Buttons */}
       <div className="flex gap-5 mt-4 text-sm text-gray-600 overflow-x-auto whitespace-nowrap hide-scrollbar">
         {/* Like & Dislike */}
-        <div className="flex rounded-full bg-neutral-100">
-          <button className="flex gap-1 items-center px-3 py-[6px] border-r rounded-l-full border-gray-300 hover:bg-neutral-200">
+        <div className="flex rounded-full bg-gray-200">
+          <button className="flex gap-1 items-center px-3 py-[6px] border-r rounded-l-full border-gray-300 hover:bg-gray-300">
             <RiThumbUpLine width={18} />
             <span>
               {(videoData?.statistics?.likeCount || 0).toLocaleString()}
             </span>
           </button>
-          <button className="px-3 py-[6px] hover:bg-neutral-200 rounded-r-full">
+          <button className="px-3 py-[6px] hover:bg-gray-300 rounded-r-full">
             <RiThumbDownLine width={18} />
           </button>
         </div>
 
         {/* Other Buttons */}
-        <button className="flex items-center gap-1 px-3 py-[6px] rounded-full bg-neutral-100 hover:bg-neutral-200">
+        <button className="flex items-center gap-1 px-3 py-[6px] rounded-full bg-gray-200 hover:bg-gray-300">
           <RiShare2Line width={18} />
           <span>Share</span>
         </button>
-        <button className="flex items-center gap-1 px-3 py-[6px] rounded-full bg-neutral-100 hover:bg-neutral-200">
+        <button className="flex items-center gap-1 px-3 py-[6px] rounded-full bg-gray-200 hover:bg-gray-300">
           <RiDownloadLine width={18} />
           <span>Download</span>
         </button>
-        <button className="flex items-center gap-1 px-3 py-[6px] rounded-full bg-neutral-100 hover:bg-neutral-200">
+        <button className="flex items-center gap-1 px-3 py-[6px] rounded-full bg-gray-200 hover:bg-gray-300">
           <RiMoreLine width={18} />
         </button>
       </div>
