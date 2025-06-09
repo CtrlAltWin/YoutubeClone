@@ -9,15 +9,17 @@ const WatchPage = () => {
   const videoId = searchParams.get("v");
 
   return (
-    <div className="lg:flex w-[100vw] lg:h-[calc(100vh-5rem)] sm:mt-4 sm:px-6">
+    <div className="max-w-[1350px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[4fr_2fr] pt-7 gap-4">
       {/* video and video details */}
-      <div className="w-full my-2">
+      <div className="w-[93vw] lg:w-[62vw] mx-auto">
         <VideoPlayer videoId={videoId} />
         {/* Actions */}
         <ActionsCard videoId={videoId} />
       </div>
       {/* comments */}
-      <Comments videoId={videoId} />
+      <div className="w-[93vw] lg:w-auto mx-auto lg:mr-2">
+        <Comments videoId={videoId} />
+      </div>
     </div>
   );
 };

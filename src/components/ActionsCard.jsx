@@ -32,7 +32,7 @@ const ActionsCard = ({ videoId }) => {
   }, [videoId]);
 
   return (
-    <div className="font-semibold max-w-[880px] text-gray-800 mx-1">
+    <div className="font-semibold text-gray-800 border border-gray-200 px-2 py-4 bg-gray-50 rounded-xl mt-2">
       {/* video Title */}
       <h2 className="font-semibold md:text-xl mt-2 px-2 text-gray-800">
         {videoData?.snippet.title}

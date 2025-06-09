@@ -4,7 +4,7 @@ import ReactPlayer from "react-player/lazy";
 const VideoPlayer = ({ videoId }) => {
   if (!videoId) return <p className="text-red-500">No video ID provided</p>;
   return (
-    <div className="w-full h-[56vw] md:h-[480px] lg:h-[495px] lg:min-w-[700px] max-w-[880px] sm:rounded-lg overflow-hidden">
+    <div className="h-[52.248vw] lg:h-[34.86vw] rounded-xl overflow-clip">
       <ReactPlayer
         url={`https://www.youtube.com/watch?v=${videoId}`}
         controls

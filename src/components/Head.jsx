@@ -7,7 +7,7 @@ import Searchbar from "./Searchbar";
 const Head = () => {
   const dispatch = useDispatch();
   return (
-    <div className="flex justify-between items-center py-2 px-4 scale-y-95 md:scale-y-100">
+    <div className="flex justify-between items-center py-2 px-4 md:scale-y-100 max-w-[1350px] mx-auto">
       <div className="flex gap-3 items-center">
         <button
           onClick={() => {

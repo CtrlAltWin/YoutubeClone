@@ -23,9 +23,11 @@ const Comments = ({ videoId }) => {
   }, [videoId]);
 
   return (
-    <div className="w-full flex flex-col lg:max-w-[490px] lg:overflow-y-auto hide-scrollbar lg:border border-gray-200 rounded-md lg:ml-2 mt-2 p-4 border">
+    <div className="w-full flex flex-col lg:overflow-y-auto hide-scrollbar border-gray-200 px-2 pb-2 pt-4 rounded-xl lg:border-l lg:border-t">
       {/* Comments Heading */}
-      <h3 className="text-lg font-bold mb-4 border-b pb-2">Comments</h3>
+      <h3 className="text-lg font-semibold text-gray-700 mb-4 border-b pb-2 px-2">
+        Comments
+      </h3>
 
       {/* Comments List */}
       {comments.length > 0 ? (
@@ -43,7 +45,7 @@ const Comments = ({ videoId }) => {
               <div className="flex-1">
                 {/* Author Name & Timestamp */}
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-bold">
+                  <p className="text-sm font-bold text-gray-600">
                     {author.authorDisplayName}
                   </p>
                   <p className="text-xs">
