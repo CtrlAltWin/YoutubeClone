@@ -8,7 +8,6 @@ import VideoSuggestions from "./VideoSuggestions";
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
-
   return (
     <div className="max-w-[1380px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[4fr_2fr] pt-7 px-4 space-y-4">
       {/* video and video details */}

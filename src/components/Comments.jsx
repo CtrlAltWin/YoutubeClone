@@ -19,6 +19,8 @@ const Comments = ({ videoId }) => {
   };
 
   useEffect(() => {
+    setComments([]);
+    setNextPageToken("");
     fetchData();
   }, [videoId]);
 
