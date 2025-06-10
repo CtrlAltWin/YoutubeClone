@@ -66,7 +66,7 @@ const Comments = ({ videoId }) => {
         <p className="text-center text-gray-500"></p>
       )}
       <button
-        className="border p-1 text-gray-700 border-gray-700 rounded-lg active:bg-neutral-100"
+        className="border p-1 text-gray-600 border-gray-200 rounded-lg active:bg-neutral-100"
         onClick={() => fetchData()}
       >
         Load More Comments
