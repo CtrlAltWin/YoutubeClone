@@ -20,7 +20,7 @@ const WatchPage = () => {
         <Comments videoId={videoId} />
       </div>
       {/* suggestions */}
-      <div className="mx-4">
+      <div className="sm:mx-2">
         <VideoSuggestions searchQuery="" />
       </div>
     </div>
