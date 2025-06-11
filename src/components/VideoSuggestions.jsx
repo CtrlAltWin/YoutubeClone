@@ -28,12 +28,14 @@ const VideoSuggestions = ({ searchQuery }) => {
   return (
     <div className="flex flex-col gap-4 w-full">
       {loading ? (
-        <div className="text-center text-gray-500">Loading...</div>
+        <div className="text-center text-gray-500">
+          {/*Here I will show shimmer UI*/}
+        </div>
       ) : videos.length === 0 ? (
-        <div className="text-center text-gray-500">No videos found.</div>
+        <div>{/* some better UI */}</div>
       ) : (
         videos.map((video) => {
-          const videoId = video.id;
+          const videoId = searchQuery ? video.id?.videoId : video.id;
           const { title, channelTitle, thumbnails, publishedAt } =
             video.snippet;
 

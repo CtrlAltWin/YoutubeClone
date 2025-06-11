@@ -34,9 +34,7 @@ const ActionsCard = ({ videoId }) => {
   return (
     <div className="font-semibold border border-gray-200 px-2 py-4 rounded-xl">
       {/* video Title */}
-      <h2 className="md:text-xl px-2 text-gray-800">
-        {videoData?.snippet.title}
-      </h2>
+      <h2 className="px-2 text-gray-800">{videoData?.snippet.title}</h2>
       {/* Channel Name and Subscribe */}
       <div className="flex gap-4 items-center mt-4">
         <h3 className="font-bold text-xl px-2 truncate w-[150px] sm:w-[300px] lg:w-auto">
