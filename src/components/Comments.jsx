@@ -1,27 +1,36 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { commentsUrl } from "../utils/url";
 
 const Comments = ({ videoId }) => {
-  const [comments, setComments] = useState([]);
-  const [nextPageToken, setNextPageToken] = useState("");
+  const [commentData, setCommentData] = useState({
+    comments: [],
+    nextPageToken: "",
+  });
 
-  const fetchData = async () => {
+  const fetchData = async (comments, nextPageToken) => {
     try {
       const response = await fetch(
         commentsUrl + `&videoId=${videoId}&pageToken=${nextPageToken}`
       );
       const json = await response.json();
-      setNextPageToken(json.nextPageToken);
-      setComments((prevComments) => [...prevComments, ...json.items]);
+      setCommentData({
+        comments: [...comments, ...json.items],
+        nextPageToken: json.nextPageToken,
+      });
+
+      console.log({
+        comments,
+        nextPageToken,
+        json,
+      });
     } catch (error) {
-      //navigate to err page
+      // navigate to error page
     }
   };
 
   useEffect(() => {
-    setComments([]);
-    setNextPageToken("");
-    fetchData();
+    setCommentData({ comments: [], nextPageToken: "" });
+    fetchData([], "");
   }, [videoId]);
 
   return (
@@ -32,8 +41,8 @@ const Comments = ({ videoId }) => {
       </h3>
 
       {/* Comments List */}
-      {comments.length > 0 ? (
-        comments.map((comment, index) => {
+      {commentData.comments.length > 0 ? (
+        commentData.comments.map((comment, index) => {
           const author = comment.snippet.topLevelComment.snippet;
           return (
             <div key={index} className="flex gap-3 lg:px-2 py-4 rounded-md">
@@ -50,9 +59,6 @@ const Comments = ({ videoId }) => {
                   <p className="text-sm font-semibold text-gray-700">
                     {author.authorDisplayName}
                   </p>
-                  {/* <p className="text-xs">
-                    {new Date(author.publishedAt).toLocaleDateString()}
-                  </p> */}
                 </div>
 
                 {/* Full Comment Display */}
@@ -64,12 +70,14 @@ const Comments = ({ videoId }) => {
           );
         })
       ) : (
-        /*to be improved*/
         <p className="text-center text-gray-500"></p>
       )}
+
       <button
         className="border p-1 text-gray-600 border-gray-200 rounded-lg active:bg-neutral-100"
-        onClick={() => fetchData()}
+        onClick={() =>
+          fetchData(commentData.comments, commentData.nextPageToken)
+        }
       >
         Load More Comments
       </button>

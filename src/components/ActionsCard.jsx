@@ -10,6 +10,7 @@ import { videos_By_Id_Url } from "../utils/url";
 
 const ActionsCard = ({ videoId }) => {
   const [videoData, setVideoData] = useState(null);
+  // console.log(videoData)
 
   useEffect(() => {
     if (!videoId) return;
