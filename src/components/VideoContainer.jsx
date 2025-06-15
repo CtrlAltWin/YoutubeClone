@@ -25,9 +25,9 @@ const VideoContainer = () => {
             : "")
       );
       const json = await data.json();
-      dispatch(accumulateVideos(json.items));
+      dispatch(accumulateVideos(json?.items));
       dispatch(
-        setNextPageToken(json.nextPageToken ? json.nextPageToken : null)
+        setNextPageToken(json?.nextPageToken ? json?.nextPageToken : null)
       );
     } catch (err) {
       console.log("error fetcheing data" + err.message);

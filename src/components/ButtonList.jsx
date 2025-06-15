@@ -10,7 +10,7 @@ const ButtonList = () => {
     const fetchData = async () => {
       const data = await fetch(catagoriesUrl);
       const json = await data.json();
-      dispatch(addCatagories(json.items));
+      dispatch(addCatagories(json?.items));
     };
     if (!catagories.length) fetchData();
   }, []);
@@ -20,7 +20,7 @@ const ButtonList = () => {
         <Button
           key={catagory.id}
           id={catagory.id}
-          title={catagory.snippet.title}
+          title={catagory.snippet?.title}
         />
       ))}
     </div>

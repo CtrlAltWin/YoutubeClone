@@ -14,7 +14,7 @@ const VideoSuggestions = ({ searchQuery }) => {
         : `${Most_Popular_Videos_Url}&type=video`;
       const response = await fetch(url);
       const data = await response.json();
-      setVideos(data.items || []);
+      setVideos(data?.items || []);
     } catch (err) {
       console.error("Error fetching videos:", err);
     }
@@ -46,7 +46,7 @@ const VideoSuggestions = ({ searchQuery }) => {
               className="flex w-full gap-3 sm:gap-4 md:gap-5 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition"
             >
               <img
-                src={thumbnails.medium.url}
+                src={thumbnails.medium?.url}
                 alt={title}
                 className="w-40 sm:w-48 md:w-56 h-auto rounded-lg object-cover"
               />

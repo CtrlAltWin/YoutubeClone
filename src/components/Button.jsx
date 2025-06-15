@@ -9,7 +9,7 @@ import {
 const Button = ({ id, title }) => {
   const dispatch = useDispatch();
   const activeCatagory = useSelector(
-    (store) => store.homeVideos.activeCatagoryId
+    (store) => store.homeVideos?.activeCatagoryId
   );
   dispatch;
   return (
