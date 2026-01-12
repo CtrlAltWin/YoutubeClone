@@ -5,4 +5,5 @@ export const videos_By_Id_Url = `https://youtube.googleapis.com/youtube/v3/video
 export const commentsUrl = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&textFormat=plainText&maxResults=10&key=${Google_Api_Key}`;
 export const catagoriesUrl = `https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=${regionCode}&key=${Google_Api_Key}`;
 export const Videos_By_Catagory_Id_Url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&regionCode=${regionCode}&key=${Google_Api_Key}`;
-export const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&regionCode=${regionCode}&key=${Google_Api_Key}`;
+export const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&type=video&regionCode=${regionCode}&key=${Google_Api_Key}`;
+export const relatedVideos = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=${Google_Api_Key}`;

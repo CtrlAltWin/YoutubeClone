@@ -12,15 +12,18 @@ const ButtonList = () => {
       const json = await data.json();
       dispatch(addCatagories(json?.items));
     };
-    if (!catagories.length) fetchData();
+    if (!catagories || !catagories.length) fetchData();
   }, []);
+
+  if (!catagories.length) return;
+
   return (
-    <div className="overflow-x-scroll w-[90vw] h-10 mt-3 hide-scrollbar scroll-smooth flex gap-3">
-      {catagories.map((catagory, index) => (
+    <div className="overflow-x-scroll w-[75vw] h-10 mt-3 hide-scrollbar scroll-smooth flex gap-3">
+      {catagories.map((catagory) => (
         <Button
-          key={catagory.id}
-          id={catagory.id}
-          title={catagory.snippet?.title}
+          key={catagory?.id}
+          id={catagory?.id}
+          title={catagory?.snippet?.title}
         />
       ))}
     </div>

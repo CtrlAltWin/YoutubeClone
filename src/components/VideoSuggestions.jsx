@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Most_Popular_Videos_Url, searchUrl } from "../utils/url"; // adjust to your API utility path
+import { searchUrl, videos_By_Id_Url } from "../utils/url";
 
-const VideoSuggestions = ({ searchQuery }) => {
+const VideoSuggestions = ({ videoId }) => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [searchQuery, setSearchQuery] = useState("");
   const fetchVideos = async () => {
     setLoading(true);
     try {
-      const url = searchQuery.length
-        ? `${searchUrl}&q=${searchQuery}&type=video`
-        : `${Most_Popular_Videos_Url}&type=video`;
+      const resp = await fetch(`${videos_By_Id_Url}&id=${videoId}`);
+      const videoData = await resp.json();
+      const searchQuery = videoData?.items[0]?.snippet?.channelTitle;
+      const url = `${searchUrl}&q=${searchQuery}&type=video&maxResults=${14}`;
       const response = await fetch(url);
       const data = await response.json();
       setVideos(data?.items || []);
@@ -23,7 +24,7 @@ const VideoSuggestions = ({ searchQuery }) => {
 
   useEffect(() => {
     fetchVideos();
-  }, [searchQuery]);
+  }, [videoId]);
 
   return (
     <div className="flex flex-col gap-4 w-full">
@@ -35,20 +36,19 @@ const VideoSuggestions = ({ searchQuery }) => {
         <div>{/* some better UI */}</div>
       ) : (
         videos.map((video) => {
-          const videoId = searchQuery ? video.id?.videoId : video.id;
           const { title, channelTitle, thumbnails, publishedAt } =
             video.snippet;
-
+          console.log(video);
           return (
             <Link
-              to={`/watch?v=${videoId}`}
+              to={`/watch?v=${video.id.videoId}`}
               key={videoId}
-              className="flex w-full gap-3 sm:gap-4 md:gap-5 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition"
+              className="flex w-full gap-3 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition"
             >
               <img
                 src={thumbnails.medium?.url}
                 alt={title}
-                className="w-40 sm:w-48 md:w-56 h-auto rounded-lg object-cover"
+                className="w-40 h-auto rounded-lg object-cover"
               />
               <div className="flex flex-col justify-start overflow-hidden">
                 <h3 className="text-sm font-medium line-clamp-2 text-black dark:text-white">

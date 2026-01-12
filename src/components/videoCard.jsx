@@ -10,24 +10,20 @@ const formatViews = (viewCount) => {
 
 const VideoCard = ({ video }) => {
   return (
-    <div className="w-96 md:w-80 bg-white overflow-hidden cursor-pointer">
-      <Link to={"/watch?v=" + video.id}>
-        <img
-          src={video?.snippet?.thumbnails.standard?.url}
-          alt={video?.snippet?.title}
-          className="w-full h-52 md:h-44  object-cover rounded-lg"
-        />
-      </Link>
-      <div className="p-3">
-        <h3 className="text-md font-semibold truncate">
-          {video?.snippet?.title}
-        </h3>
-        <p className="text-sm text-gray-600 font-semibold">
-          {video?.snippet?.channelTitle}
-        </p>
-        <p className="text-sm text-gray-600 font-semibold">
-          {formatViews(video?.statistics?.viewCount)}
-        </p>
+    <div className="w-auto h-auto rounded-lg p-3 hover:bg-slate-100 transition-all duration-300">
+      <div class="aspect-video w-full overflow-hidden rounded-lg">
+        <Link to={"/watch?v=" + video?.id}>
+          <img
+            src={video?.snippet?.thumbnails.standard?.url}
+            alt={video?.snippet?.title}
+            class="w-full h-full object-cover object-center"
+          />
+        </Link>
+      </div>
+      <div className="px-4 pt-2 text-sm">
+        <h3 className="font-bold">{video?.snippet?.title}</h3>
+        <p className="">{video?.snippet?.channelTitle}</p>
+        <p className="">{formatViews(video?.statistics?.viewCount)}</p>
       </div>
     </div>
   );

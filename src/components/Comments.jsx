@@ -34,7 +34,7 @@ const Comments = ({ videoId }) => {
   }, [videoId]);
 
   return (
-    <div className="w-full border flex flex-col lg:overflow-y-auto hide-scrollbar border-gray-200 px-2 pb-2 pt-4 rounded-xl">
+    <div className="w-full flex flex-col lg:overflow-y-auto hide-scrollbar border-gray-200 pb-2 pt-4 rounded-xl">
       {/* Comments Heading */}
       <h3 className="text-lg font-semibold mb-4 border-b border-gray-200 pb-2 px-2">
         Comments
@@ -45,7 +45,7 @@ const Comments = ({ videoId }) => {
         commentData.comments.map((comment, index) => {
           const author = comment.snippet.topLevelComment.snippet;
           return (
-            <div key={index} className="flex gap-3 lg:px-2 py-4 rounded-md">
+            <div key={index} className="flex gap-3 lg:px-2 py-3">
               {/* Profile Picture */}
               <img
                 src={author.authorProfileImageUrl}

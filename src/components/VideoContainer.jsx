@@ -49,22 +49,21 @@ const VideoContainer = () => {
     fetchData();
   }, [activeCatagoryId]);
 
-  if (!videos.length) return <div></div>;
+  if (!videos || !videos.length) return <div></div>;
 
   return (
     <div
       ref={containerRef}
-      className="flex flex-wrap justify-center gap-4 md:gap-y-14 h-full w-[97vw] mt-3 pt-5 overflow-y-scroll hide-scrollbar"
+      className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 h-full mt-3 pt-5 px-2 overflow-y-scroll"
       onScroll={handleInfiniteScroll}
     >
       {videos.map((video, index) => (
         <VideoCard key={`${video.id}-${index}`} video={video} />
       ))}
-      {
-        <div className="flex justify-center w-full pb-2">
-          <ClipLoader size={25} color="#F53131" />
-        </div>
-      }
+
+      <div className="col-span-full flex justify-center">
+        <ClipLoader />
+      </div>
     </div>
   );
 };
