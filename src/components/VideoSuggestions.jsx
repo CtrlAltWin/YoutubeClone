@@ -27,7 +27,10 @@ const VideoSuggestions = ({ videoId }) => {
   }, [videoId]);
 
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col w-full">
+      <h3 className="text-lg font-semibold mb-4 border-b border-gray-200 pb-2 px-2">
+        Videos
+      </h3>
       {loading ? (
         <div className="text-center text-gray-500">
           {/*Here I will show shimmer UI*/}
@@ -38,7 +41,7 @@ const VideoSuggestions = ({ videoId }) => {
         videos.map((video) => {
           const { title, channelTitle, thumbnails, publishedAt } =
             video.snippet;
-          console.log(video);
+    
           return (
             <Link
               to={`/watch?v=${video.id.videoId}`}
